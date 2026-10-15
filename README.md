@@ -54,3 +54,9 @@ voice_lab/             # models, storage, recognition adapter, CLI
 tests/                 # unit tests
 data/                  # local transcript output (ignored by Git)
 ```
+
+## Continuous integration
+
+[![Python CI](https://github.com/Fakude/speech-recognition-/actions/workflows/ci.yml/badge.svg)](https://github.com/Fakude/speech-recognition-/actions/workflows/ci.yml)
+
+Every push and pull request installs the pinned dependencies and runs the unit-test suite on Python 3.12. The workflow is defined in `.github/workflows/ci.yml`.
