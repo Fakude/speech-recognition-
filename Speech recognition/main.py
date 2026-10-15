@@ -1,31 +1,12 @@
-import speech_recognition as sr
-import pyttsx3
+"""Compatibility launcher for the original project location."""
 
-recognizer = sr.Recognizer()
-engine = pyttsx3.init()
+from pathlib import Path
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from voice_lab.cli import main
 
 
-def speak(text):
-    engine.say(text)
-    engine.runAndWait()
-
-while True:
-    try:
-        with sr.Microphone() as mic:
-            
-            recognizer.adjust_for_ambient_noise(mic,duration=0.7)
-            print("Listening")
-            audio = recognizer.listen(mic)
-            
-
-            text = recognizer.recognize_google(audio)
-            text = text.lower()
-
-            print("Recognized :\n", text)
-
-            speak(text)
-    except sr.UnknownValueError :
-        print("that was not  understood")
-    except sr.RequestError as e:
-        print("There has been a request error, results :",e)
+if __name__ == "__main__":
+    raise SystemExit(main())
     
